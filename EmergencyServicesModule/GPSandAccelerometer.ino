@@ -92,7 +92,7 @@ void loop()
     strcat(gs, "G.");
 
     // phone number to send text to 
-    char sendto[21] = "6309995053";
+    char sendto[21] = "";
 
     char message[140] = "Driver has been in an accident. Suffered an impact of: ";
     strcat(message,gs);
@@ -105,7 +105,7 @@ void loop()
       fona.sendSMS(sendto, "Information of collision in format: mode,fixstatus,utctime(yyyymmddHHMMSS),latitude,longitude,altitude,speed,course,fixmode,reserved1,HDOP,PDOP,VDOP,reserved2,view_satellites,used_satellites,reserved3,C/N0max,HPA,VPA");
       fona.sendSMS(sendto, gpsdata);
     }
-    else // GPS did not turn on - send text without coordinates
+    else // GPS did not turn on - send text without coordinates - dummy location
     {
       strcat(message," Location: UIC SEL.");
       fona.sendSMS(sendto, message);
